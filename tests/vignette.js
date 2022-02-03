@@ -13,10 +13,10 @@ async function buyVignette() {
     // 1. Go to https://www.a1.bg/bg
     await driver.get("https://www.a1.bg/bg")
 
-    let emergency = await driver.findElement(By.id('emergency'))
-    if (emergency !== undefined) {
-        await driver.findElement(By.className('close closeModal')).click()
-    }
+    // let emergency = await driver.findElement(By.id('emergency'))
+    // if (emergency !== undefined) {
+    //     await driver.findElement(By.className('close closeModal')).click()
+    // }
 
     // 2. Click on button "е-Винетка"
     await driver.findElement(By.linkText("е-Винетка")).click();
