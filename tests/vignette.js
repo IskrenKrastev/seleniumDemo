@@ -10,6 +10,10 @@ const assert = require("assert");
 async function buyVignette() {
     // launch the browser
     let driver = await new Builder().forBrowser("chrome").build();
+
+    await driver.manage().setTimeouts({
+        implicit: 10000
+    })
     // 1. Go to https://www.a1.bg/bg
     await driver.get("https://www.a1.bg/bg")
 
@@ -71,7 +75,7 @@ async function buyVignette() {
     await driver.findElement(By.className("button arrowright")).click();
 
     //12. Verify the data on the screen: correct registration number and vignette type
-    let carPlate = await (await driver.findElement(By.xpath("//table/tbody/tr[1]/td[2]")).getText())
+    let carPlate = await driver.findElement(By.xpath("//table/tbody/tr[1]/td[2]")).getText()
     assert.strictEqual(carPlate, "СА1234ВТ")
 
     //13. Click button "Продължи"
